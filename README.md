@@ -1,50 +1,110 @@
 ## Application Preview
 
-The platform provides dedicated interfaces for administrators, teachers and students, with role-specific access to academic management features.
+SchoolManagementMERN provides dedicated interfaces for **Administrators, Teachers, and Students**, with role-based access to academic planning, user management, educational resources, and scheduling features.
 
-### Landing Page
-Public landing page presenting the educational platform and providing access to authentication.
+---
+
+### 🏫 Landing Page
+
+Public entry point introducing the educational platform and providing access to the authentication system.
 
 ![Landing Page](images/landing-page.png)
 
 ---
 
-### Authentication
-Secure login interface used by administrators, teachers and students.
+### 🔐 Authentication
+
+JWT-based authentication interface shared by the three application roles:
+
+- Administrator
+- Teacher
+- Student
+
+After authentication, users are redirected to an interface adapted to their assigned role.
 
 ![Login](images/login.png)
 
 ---
 
-### Admin Dashboard
-Administrative dashboard providing an overview of platform activity and academic statistics.
+### 📊 Admin Dashboard
+
+The administrator dashboard provides a centralized overview of school activity through visual statistics and charts.
+
+It includes information such as:
+
+- User distribution by role
+- Sessions by subject
+- Session status overview
+- Monthly session activity
 
 ![Admin Dashboard](images/admin-dashboard.png)
 
 ---
 
-### User Management
-Administrators can manage users and their roles, including Admin, Teacher and Student accounts.
+### 👥 User & Role Management
+
+Administrators can manage platform accounts from a centralized interface.
+
+The application supports three roles:
+
+- **Admin**
+- **Teacher**
+- **Student**
+
+Administrators can create, update, activate/deactivate, and manage user accounts.
 
 ![User Management](images/admin-users.png)
 
 ---
 
-### Group Management
-Administration interface for creating and managing student groups and assigning students to their respective groups.
+### 🎓 Group Management
+
+Administrators can create and manage student groups and organize student assignments.
+
+Each group can contain information such as:
+
+- Academic level
+- Assigned students
+- Group membership
 
 ![Group Management](images/admin-groups.png)
 
 ---
 
-### Course & Session Management
-Administrators can organize academic sessions, associate subjects, teachers, groups, rooms and schedules.
+### 📅 Academic Session Management
+
+The scheduling interface allows administrators to organize teaching sessions by associating:
+
+- Subject
+- Teacher
+- Student group
+- Classroom
+- Date
+- Start and end time
+- Session type
+
+This module supports centralized academic planning and timetable management.
 
 ![Session Management](images/admin-sessions.png)
 
 ---
 
-### Teacher Document Management
-Teachers can manage and publish educational documents associated with their subjects.
+### 📄 Teacher Document Management
+
+Teachers have a dedicated interface for managing educational resources associated with their assigned subjects.
+
+They can publish course documents that students can later access from their own interface.
 
 ![Teacher Document Management](images/teacher-documents.png)
+
+---
+
+## Role-Based Experience
+
+The platform adapts its navigation and available features according to the authenticated user's role:
+
+| Role | Main Capabilities |
+|---|---|
+| **Administrator** | Users, groups, rooms, subjects, sessions, documents, dashboard and global calendar |
+| **Teacher** | Personal calendar, assigned subjects and educational document management |
+| **Student** | Personal calendar, enrolled subjects and access to course documents |
