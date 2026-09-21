@@ -12,9 +12,11 @@ The demo includes:
 - Teacher document management
 - Student calendar and course resources
 
-▶️ [Watch the full demo on Google Drive]([YOUR_GOOGLE_DRIVE_LINK](https://drive.google.com/file/d/1Uy4cN5VlgvYhHsBc-llL0Ot4zzAh-6TL/view?usp=sharing))
+▶️ **[Watch the full demo on Google Drive](https://drive.google.com/file/d/1Uy4cN5VlgvYhHsBc-llL0Ot4zzAh-6TL/view?usp=sharing)**
 
----## Application Preview
+---
+
+## Application Preview
 
 SchoolManagementMERN provides dedicated interfaces for **Administrators, Teachers, and Students**, with role-based access to academic planning, user management, educational resources, and scheduling features.
 
