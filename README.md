@@ -1,4 +1,20 @@
-## Application Preview
+## 🎥 Video Demo
+
+A complete walkthrough of **SchoolManagementMERN**, demonstrating the main workflows available to administrators, teachers, and students.
+
+The demo includes:
+
+- JWT authentication and role-based access
+- Admin dashboard and statistics
+- User and role management
+- Student group management
+- Academic session scheduling
+- Teacher document management
+- Student calendar and course resources
+
+▶️ **[Watch the full demo on Google Drive]([YOUR_GOOGLE_DRIVE_LINK](https://drive.google.com/file/d/1Uy4cN5VlgvYhHsBc-llL0Ot4zzAh-6TL/view?usp=sharing))**
+
+---## Application Preview
 
 SchoolManagementMERN provides dedicated interfaces for **Administrators, Teachers, and Students**, with role-based access to academic planning, user management, educational resources, and scheduling features.
 
