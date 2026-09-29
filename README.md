@@ -118,6 +118,118 @@ SchoolManagementMERN/
 └── README.md
 ```
 
+## Data Model
+
+| MongoDB model | Main responsibility | Key relationships |
+|---|---|---|
+| `utilisateur` | User identity, contact information, role, and account status | Referenced by lessons and documents |
+| `group` | Student group and academic level | Contains student references |
+| `matiere` | Subject, coefficient, semester, and description | Referenced by lessons and documents |
+| `salle` | Classroom definition | Referenced by lessons |
+| `lesson` | Scheduled academic session, time, type, and status | Links teacher, group, subject, and room |
+| `document` | Course resource metadata and uploaded file | Links subject and teacher |
+
+The user model supports `admin`, `teacher`, and `student` roles as well as active or inactive account status. Lessons support scheduled, cancelled, completed, and postponed states.
+
+## Authentication Workflow
+
+```text
+Registration
+   │
+   ├── Check whether the email already exists
+   ├── Hash the password with bcrypt
+   └── Store the new MongoDB user
+
+Login
+   │
+   ├── Find the account by email
+   ├── Compare the password hash
+   ├── Reject inactive accounts
+   └── Sign a JWT containing user ID, role, and email
+
+Protected request
+   │
+   ├── Read the Bearer token
+   ├── Verify and decode the JWT
+   ├── Attach the decoded user to the request
+   └── Apply role authorization middleware
+```
+
+On the frontend, Redux Toolkit stores the authenticated user and token. Redux Persist keeps the authentication state across browser reloads, while protected React routes restrict access according to the active role.
+
+## Security Status
+
+Security controls currently present:
+
+- Password hashing with bcrypt
+- JWT-based API authentication
+- Role middleware for Admin, Teacher, and Student access
+- Account-status checks during login
+- Protected React routes
+- Restricted file types and upload handling through Multer routes
+
+Important hardening work remains before production use:
+
+- The JWT signing secret is currently hard-coded and must be moved to an environment variable.
+- The MongoDB connection string, API URL, frontend origin, and ports are hard-coded for local development.
+- JWT expiration is not explicitly configured.
+- Registration must prevent public clients from assigning privileged roles.
+- Authentication failures should use consistent HTTP status codes.
+- Input validation, rate limiting, security headers, and centralized error handling should be added.
+- Uploaded documents require stronger validation, access control, storage isolation, and malware scanning.
+
+## Environment Configuration Status
+
+The repository does not currently consume a `.env` file consistently. The active local values are embedded in the backend and frontend source code. A future configuration layer should use variables similar to:
+
+```dotenv
+PORT=3000
+MONGODB_URI=mongodb://localhost:27017/projet
+JWT_SECRET=replace_with_a_long_random_secret
+JWT_EXPIRES_IN=8h
+FRONTEND_URL=http://localhost:5173
+VITE_API_URL=http://localhost:3000/api
+```
+
+This block documents the intended secure configuration; adding the file alone will not change runtime behavior until the source code reads these variables through `process.env` and `import.meta.env`.
+
+## Testing Strategy
+
+No automated test suite is currently present. The following test layers are recommended:
+
+| Layer | Recommended coverage |
+|---|---|
+| **Backend unit tests** | Authentication services, role decisions, scheduling rules |
+| **API integration tests** | Auth, users, groups, subjects, rooms, lessons, documents |
+| **Database tests** | Mongoose validation and model relationships |
+| **Frontend component tests** | Forms, dashboards, calendars, protected navigation |
+| **End-to-end tests** | Admin setup, teacher upload, student document access |
+
+Suggested tooling includes Jest, Supertest, MongoDB Memory Server, React Testing Library, and Playwright or Cypress. These are recommendations and are not currently installed as a complete test stack.
+
+## Current Limitations
+
+- Configuration and security secrets are embedded in source files.
+- MongoDB and API addresses are fixed to local development values.
+- Automated tests and CI checks are not yet available.
+- Uploaded documents are stored on the local filesystem.
+- The repository does not include Docker or a reproducible MongoDB environment.
+- API documentation is not generated through Swagger/OpenAPI.
+- Validation and error responses are not yet standardized across all routes.
+- Production logging, monitoring, backups, and audit trails are not included.
+
+## Roadmap
+
+- Externalize secrets, database URLs, ports, CORS origins, and frontend API URLs
+- Add request validation and centralized error handling
+- Add token expiration, refresh strategy, rate limiting, and security headers
+- Introduce backend, frontend, and end-to-end automated tests
+- Add Swagger/OpenAPI documentation
+- Add Docker Compose for MongoDB, API, and frontend
+- Move document uploads to managed object storage
+- Add GitHub Actions for linting, tests, builds, and secret scanning
+- Add production logging, audit trails, monitoring, and backup guidance
+
 ## 🎥 Video Demo
 
 A complete walkthrough of **SchoolManagementMERN**, demonstrating the main workflows available to administrators, teachers, and students.
