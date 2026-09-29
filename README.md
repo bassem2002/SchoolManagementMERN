@@ -126,3 +126,62 @@ The platform adapts its navigation and available features according to the authe
 | **Administrator** | Users, groups, rooms, subjects, sessions, documents, dashboard and global calendar |
 | **Teacher** | Personal calendar, assigned subjects and educational document management |
 | **Student** | Personal calendar, enrolled subjects and access to course documents |
+
+---
+
+## Installation
+
+### Prerequisites
+
+- Node.js 20 or later and npm
+- MongoDB Community Server running locally on port `27017`
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/bassem2002/SchoolManagementMERN.git
+cd SchoolManagementMERN
+```
+
+### 2. Install dependencies
+
+```bash
+cd backend
+npm install
+
+cd ../frontend
+npm install
+```
+
+### 3. Start MongoDB
+
+Make sure MongoDB is running locally. The current backend connects to:
+
+```text
+mongodb://localhost:27017/projet
+```
+
+### 4. Run the application
+
+From the `backend` directory, start both the Express API and the Vite frontend:
+
+```bash
+npm start
+```
+
+Alternatively, run them in separate terminals:
+
+```bash
+# Terminal 1
+cd backend
+npm run backend
+
+# Terminal 2
+cd frontend
+npm run dev
+```
+
+- Frontend: `http://localhost:5173`
+- Backend API: `http://localhost:3000`
+
+The backend checks for the initial administrator account during startup. Review `backend/scripts/ajouterAdmin.js` before first use and replace any development credentials with secure local values.
