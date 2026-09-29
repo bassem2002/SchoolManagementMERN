@@ -1,3 +1,123 @@
+# SchoolManagementMERN 🎓
+
+<p align="center">
+  <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
+  <img src="https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express" />
+  <img src="https://img.shields.io/badge/React%2019-61DAFB?style=for-the-badge&logo=react&logoColor=111827" alt="React 19" />
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
+  <img src="https://img.shields.io/badge/JWT%20%7C%20RBAC-Security-0F766E?style=for-the-badge" alt="JWT RBAC" />
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-14B8A6?style=for-the-badge" alt="MIT License" /></a>
+</p>
+
+<p align="center"><strong>A role-based academic management platform for administrators, teachers, and students.</strong></p>
+
+<p align="center"><a href="#key-features">Features</a> · <a href="#architecture">Architecture</a> · <a href="#installation">Installation</a> · <a href="#-video-demo">Demo</a></p>
+
+---
+
+## Project Overview
+
+SchoolManagementMERN is a full-stack school management platform that centralizes academic planning, user administration, educational resources, and role-specific dashboards. It provides dedicated experiences for administrators, teachers, and students while enforcing authenticated, role-based access to protected features.
+
+The project demonstrates the implementation of a complete MERN application, from MongoDB data modeling and Express REST APIs to a responsive React interface with persistent authentication state, calendars, dashboards, and document management.
+
+## Key Features
+
+### Administration
+
+- Dashboard with academic statistics and visual indicators
+- User lifecycle and role management
+- Student group, subject, classroom, and session management
+- Centralized academic calendar and scheduling
+- Account activation and deactivation
+
+### Teacher Experience
+
+- Personal teaching calendar
+- Assigned subject visibility
+- Educational document upload and management
+- Access restricted to teacher-specific workflows
+
+### Student Experience
+
+- Personal course calendar
+- Enrolled subject visibility
+- Access to educational resources and documents
+- Navigation adapted to the student role
+
+### Platform Capabilities
+
+- JWT authentication and protected routes
+- Role-based access control for Admin, Teacher, and Student
+- Document uploads with Multer
+- Persistent client state with Redux Persist
+- Interactive calendars and dashboard charts
+- RESTful communication between React and Express
+
+## Technology Stack
+
+| Layer | Technologies |
+|---|---|
+| **Frontend** | React 19, Vite, React Router, Redux Toolkit, Chakra UI, Recharts |
+| **Backend** | Node.js, Express 5, Mongoose |
+| **Database** | MongoDB |
+| **Security** | JWT, bcrypt, role-based authorization middleware |
+| **Files & Communication** | Multer, Nodemailer, PDF Parse |
+| **Developer Experience** | Nodemon, ESLint, Concurrently |
+
+## Architecture
+
+```text
+React + Redux frontend (port 5173)
+              │
+              │ HTTP / JSON
+              ▼
+Express REST API (port 3000)
+              │
+       ┌──────┴──────┐
+       ▼             ▼
+ MongoDB          Uploads
+ users, groups,   course files
+ sessions, docs
+```
+
+The backend follows a modular organization based on routes, controllers, services, models, and middleware. The frontend separates pages, reusable components, layouts, routing, and Redux state.
+
+## Main API Areas
+
+| API prefix | Responsibility |
+|---|---|
+| `/api/auth` | Registration, login, and authentication |
+| `/api/users` | User and role management |
+| `/api/group` | Student group management |
+| `/api/matiere` | Subject management |
+| `/api/salle` | Classroom management |
+| `/api/lesson` | Academic session scheduling |
+| `/api/documents` | Educational document management |
+
+## Project Structure
+
+```text
+SchoolManagementMERN/
+├── backend/
+│   ├── controllers/
+│   ├── middlewares/
+│   ├── models/
+│   ├── routes/
+│   ├── scripts/
+│   ├── services/
+│   ├── uploads/
+│   └── index.js
+├── frontend/
+│   ├── src/
+│   │   ├── composants/
+│   │   ├── layout/
+│   │   ├── pages/
+│   │   └── routes/
+│   └── package.json
+└── README.md
+```
+
 ## 🎥 Video Demo
 
 A complete walkthrough of **SchoolManagementMERN**, demonstrating the main workflows available to administrators, teachers, and students.
