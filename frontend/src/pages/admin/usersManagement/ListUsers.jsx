@@ -21,7 +21,7 @@ const ListUsers = () => {
       setUtilisateurs(res.data);
       // rod belek utilisateurs = res.data !!!!! ghaaalet
     } catch (error) {
-      console.error("Erreur lors du chargement :", error);
+      console.error("Erreur lors du chargement :");
     }
   };
 
@@ -34,7 +34,7 @@ const ListUsers = () => {
         fetchUtilisateurs();
         toast.error("utilisateur supprimé ! ");
       } catch (error) {
-        console.error("Erreur suppression :", error);
+        console.error("Erreur suppression :");
       }
     }
   };
@@ -46,7 +46,7 @@ const ListUsers = () => {
       fetchUtilisateurs();
       toast.info("status modifié ! ");
     } catch (error) {
-      console.error("Erreur changement statut :", error);
+      console.error("Erreur changement statut :");
     }
   };
   return (

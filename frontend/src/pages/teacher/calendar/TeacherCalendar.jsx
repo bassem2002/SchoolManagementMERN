@@ -127,7 +127,7 @@ const TeacherCalendar = () => {
         const result = await teacherServices.get_lessons_by_teacher_id(user._id);
         setSessions(result.data);
       } catch (error) {
-        console.error("Error fetching sessions:", error);
+        console.error("Error fetching sessions:");
       } finally {
         setIsLoading(false);
       }

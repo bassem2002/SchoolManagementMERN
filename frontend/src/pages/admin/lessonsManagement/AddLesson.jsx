@@ -76,7 +76,7 @@ const AddLesson = () => {
         matiere_id: "",
       });
     } catch (error) {
-      console.error(error);
+      console.error("Echec de la requete");
       const msg =
         error?.response?.data?.error || "Erreur inconnue lors de l'ajout.";
 

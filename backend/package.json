@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js",
+    "test": "node --test test/*.test.js",
     "backend": "nodemon index.js",
     "frontend": "cd ../frontend && npm run dev",
     "start": "concurrently \"npm run backend\" \"npm run frontend\""

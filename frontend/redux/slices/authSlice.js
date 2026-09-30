@@ -99,7 +99,6 @@ const authSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.loading = false;
-        console.log(action.payload);
         if (action.payload.error) {
           state.error = action.payload.error;
         } else {

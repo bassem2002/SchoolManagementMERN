@@ -15,7 +15,7 @@ function SubjectDocuments() {
         const result = await studentService.get_subject_documents(id);
         setDocuments(result.data);
       } catch (err) {
-        console.error("Error fetching documents", err);
+        console.error("Error fetching documents");
       }
     }
     fetchDocuments();

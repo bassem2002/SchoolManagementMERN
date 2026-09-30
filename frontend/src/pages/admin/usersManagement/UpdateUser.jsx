@@ -21,10 +21,9 @@ const UpdateUser = () => {
   const fetchUser = async () => {
     try {
       const user = await adminServices.get_user_by_id(id);
-      console.log(user);
       setFormData({ ...user.data, mot_de_passe: "" }); // vider mot de passe pour sécurité
     } catch (error) {
-      console.error("Erreur lors de la récupération de l'utilisateur :", error);
+      console.error("Erreur lors de la récupération de l'utilisateur :");
     }
   };
 
@@ -50,7 +49,7 @@ const UpdateUser = () => {
       toast.success("Utilisateur mis à jour avec succès.");
       navigate("/list_users"); // redirige vers la liste
     } catch (error) {
-      console.error("Erreur lors de la mise à jour :", error);
+      console.error("Erreur lors de la mise à jour :");
       toast.error("Une erreur est survenue.");
     }
   };

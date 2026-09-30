@@ -18,7 +18,7 @@ const CreateGroup = () => {
         const data = await adminServices.get_users(); // Crée cette méthode
         setAllEleves(data.data.filter((el) => el.role == "student"));
       } catch (error) {
-        console.error("Erreur lors du chargement des élèves", error);
+        console.error("Erreur lors du chargement des élèves");
       }
     };
 

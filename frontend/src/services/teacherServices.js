@@ -37,7 +37,7 @@ const add_document = async (data) => {
     toast.success("document ajouté avec succès");
     return result.data;
   } catch (error) {
-    console.error(error);
+    console.error("Echec de la requete");
   }
 };
 
@@ -46,7 +46,7 @@ const get_matieres = async () => {
     let result = await api.get(BASE_URL + "/matiere/get_all_matieres");
     return result;
   } catch (error) {
-    console.error(error);
+    console.error("Echec de la requete");
   }
 };
 
@@ -57,7 +57,7 @@ const get_teacher_documents = async (id) => {
     );
     return result;
   } catch (error) {
-    console.error(error);
+    console.error("Echec de la requete");
   }
 };
 
@@ -74,7 +74,7 @@ const update_document = async (id, data) => {
     );
     return result.data;
   } catch (error) {
-    console.error("Erreur lors de la mise à jour du document :", error);
+    console.error("Erreur lors de la mise à jour du document :");
     throw error; // pour que le composant puisse gérer l'erreur aussi
   }
 };
@@ -96,7 +96,7 @@ const get_lessons_by_teacher_id = async (id) => {
    let result = await api.get(BASE_URL + `/lesson/get_lessons_by_teacher_id/${id}`);
    return result;
  } catch (error) {
-   console.error(error);
+   console.error("Echec de la requete");
  }
 }
 
@@ -106,7 +106,7 @@ const get_teacher_subjects = async (id) => {
     let result = await api.get(BASE_URL + `/matiere/get_teacher_subjects/${id}`);
     return result;
   } catch (error) {
-    console.error(error);
+    console.error("Echec de la requete");
   }
 };
 

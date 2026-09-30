@@ -26,7 +26,7 @@ export default function Connexion() {
       try {
         dispatch(loginUser({ email: email, mot_de_passe: password }));
       } catch (err) {
-        console.error("Erreur de connexion :", err);
+        console.error("Erreur de connexion :");
         alert("Email ou mot de passe incorrect");
       }
     }

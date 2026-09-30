@@ -22,7 +22,7 @@ const AddRoom = () => {
       toast.success("Salle ajoutée avec succès !");
       setNom(""); // Reset form after successful submission
     } catch (error) {
-      console.error("Erreur lors de l'ajout de la salle:", error);
+      console.error("Erreur lors de l'ajout de la salle:");
       toast.error(
         error.response?.data?.message || "Erreur lors de l'ajout de la salle"
       );

@@ -5,11 +5,15 @@ exports.checkAdmin = async () => {
   try {
     const exisitingUser = await utilisateur.findOne({ role: "admin" });
     if (!exisitingUser) {
-      const hashedPassword = await bcrypt.hash("admin", 10); // mot de passe simple pour test
+      if (!process.env.ADMIN_EMAIL || !process.env.ADMIN_PASSWORD) {
+        console.log("Creation initiale ignoree : configurer ADMIN_EMAIL et ADMIN_PASSWORD.");
+        return;
+      }
+      const hashedPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD, 10);
 
       const newAdmin = new utilisateur({
         nom: "Super Admin",
-        email: "admin@gmail.com",
+        email: process.env.ADMIN_EMAIL,
         mot_de_passe: hashedPassword,
         role: "admin",
       });
@@ -20,6 +24,6 @@ exports.checkAdmin = async () => {
       console.log("ℹ️ Admin déjà existant.");
     }
   } catch (err) {
-    console.error("❌ Erreur lors de la vérification/ajout de l'admin :", err);
+    console.error("❌ Erreur lors de la vérification/ajout de l'admin :");
   }
 };

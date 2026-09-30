@@ -1,12 +1,13 @@
 const utilisateur = require("../models/Utilisateur");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { getJwtSecret } = require("../config/jwt");
 /*
   const { nom, email, mot_de_passe, cin, telephone, adresse, role } = userData;
 
 */
 const register = async (userData) => {
-  console.log(userData);
+
   const existingUser = await utilisateur.findOne({ email: userData.email });
   if (existingUser) {
     throw new Error("Email déja utilisé");
@@ -29,7 +30,7 @@ const register = async (userData) => {
 };
 
 const login = async (userData) => {
-  const existingUser = await utilisateur.findOne({ email: userData.email });
+  const existingUser = await utilisateur.findOne({ email: userData.email }).select("+mot_de_passe");
   if (!existingUser) {
     throw new Error("Email n'existe pas ! ");
   }
@@ -49,7 +50,7 @@ const login = async (userData) => {
     email: existingUser.email,
   };
 
-  let token = jwt.sign(payload, "ter-155-art-1994-unbeaumoment-557");
+  let token = jwt.sign(payload, getJwtSecret(), { expiresIn: "1h", algorithm: "HS256" });
 
   return { token: token, user: existingUser, message: "connected succefully" };
 };

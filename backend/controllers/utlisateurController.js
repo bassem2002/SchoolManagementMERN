@@ -43,13 +43,14 @@ const updateUtilisateur = async (req, res) => {
   try {
     const utilisateur = await utilisateurService.updateUtilisateur(
       req.params.id,
-      req.body
+      req.body,
+      req.user
     );
     if (!utilisateur)
       return res.status(404).json({ message: "Utilisateur introuvable" });
     res.json(utilisateur);
   } catch (err) {
-    res.status(500).json({ message: "Erreur serveur" });
+    res.status(err.status || 500).json({ message: err.status ? err.message : "Erreur serveur" });
   }
 };
 

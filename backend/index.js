@@ -1,3 +1,5 @@
+require("dotenv").config({ path: require("path").join(__dirname, ".env") });
+require("./config/jwt").getJwtSecret();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -56,6 +58,6 @@ mongoose
     );
   })
   .catch((err) => {
-    console.error("❌ Erreur de connexion MongoDB :", err);
+    console.error("❌ Erreur de connexion MongoDB :");
   });
 // express static serve

@@ -83,7 +83,7 @@ function SessionsModal({ onClose, initialSessions }) {
         )
       );
     } catch (error) {
-      console.error("Error updating session:", error);
+      console.error("Error updating session:");
     } finally {
       setIsUpdating(false);
     }

@@ -19,7 +19,7 @@ const UpdateRoom = () => {
         setNom(response.data.nom);
       } catch (error) {
         toast.error("Erreur lors du chargement de la salle");
-        console.error(error);
+        console.error("Echec de la requete");
         navigate("/list_rooms");
       } finally {
         setLoading(false);
@@ -44,7 +44,7 @@ const UpdateRoom = () => {
       toast.success("Salle mise à jour avec succès !");
       navigate("/list_rooms");
     } catch (error) {
-      console.error("Erreur lors de la mise à jour:", error);
+      console.error("Erreur lors de la mise à jour:");
       toast.error(
         error.response?.data?.message || "Erreur lors de la mise à jour"
       );

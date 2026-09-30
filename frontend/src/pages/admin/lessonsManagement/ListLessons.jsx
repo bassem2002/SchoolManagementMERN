@@ -25,7 +25,7 @@ const ListLessons = () => {
       setLessons(res.data);
     } catch (err) {
       toast.error("Erreur lors du chargement des leçons.");
-      console.error(err);
+      console.error("Echec de la requete");
     }
   };
 
@@ -37,7 +37,7 @@ const ListLessons = () => {
         getLessons();
       } catch (err) {
         toast.error("Erreur lors de la suppression.");
-        console.error(err);
+        console.error("Echec de la requete");
       }
     }
   };

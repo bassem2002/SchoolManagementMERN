@@ -68,7 +68,7 @@ const UpdateLesson = () => {
         "Erreur de chargement des données: " +
           (error.response?.data?.message || error.message)
       );
-      console.error(error);
+      console.error("Echec de la requete");
       navigate("/list_lessons");
     } finally {
       setIsLoading(false);
@@ -97,7 +97,7 @@ const UpdateLesson = () => {
       } else {
         toast.error(`⚠️ ${errorMsg}`);
       }
-      console.error(err);
+      console.error("Echec de la requete");
     } finally {
       setIsSubmitting(false);
     }

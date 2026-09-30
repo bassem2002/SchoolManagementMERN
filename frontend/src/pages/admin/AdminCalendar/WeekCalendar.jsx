@@ -40,7 +40,7 @@ const WeekCalendar = ({ allLessons }) => {
         }));
         setSessions(sessionsWithColor);
       } catch (error) {
-        console.error("Failed to fetch sessions", error);
+        console.error("Failed to fetch sessions");
       } finally {
         setIsLoading(false);
       }

@@ -19,7 +19,7 @@ function SubjectStudent() {
         setMatieres(res.data);
         setError(null);
       } catch (error) {
-        console.error("Erreur lors du chargement des matières :", error);
+        console.error("Erreur lors du chargement des matières :");
         setError("Impossible de charger les matières");
       } finally {
         setIsLoading(false);

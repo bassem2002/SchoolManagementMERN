@@ -17,10 +17,9 @@ const ListGroups = () => {
   const fetchGroups = async () => {
     try {
       const result = await adminServices.get_all_groups();
-      console.log(result);
       setGroups(result.data);
     } catch (error) {
-      console.error("Erreur lors de la récupération des groupes :", error);
+      console.error("Erreur lors de la récupération des groupes :");
     }
   };
 
@@ -30,7 +29,7 @@ const ListGroups = () => {
         await adminServices.delete_group(id);
         setGroups((prev) => prev.filter((g) => g._id !== id));
       } catch (error) {
-        console.error("Erreur suppression :", error);
+        console.error("Erreur suppression :");
       }
     }
   };

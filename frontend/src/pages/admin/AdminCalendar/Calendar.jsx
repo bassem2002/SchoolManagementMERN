@@ -125,7 +125,7 @@ const Calendar = () => {
         const result = await AdminServices.get_all_lessons();
         setSessions(result.data);
       } catch (error) {
-        console.error("Error fetching sessions:", error);
+        console.error("Error fetching sessions:");
       } finally {
         setIsLoading(false);
       }

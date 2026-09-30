@@ -31,7 +31,7 @@ const get_subjects_by_student_id = async (id) => {
     );
     return result;
   } catch (error) {
-    console.error(error);
+    console.error("Echec de la requete");
   }
 };
 
@@ -42,7 +42,7 @@ const get_subject_documents = async (id) => {
     );
     return result;
   } catch (error) {
-    console.error(error);
+    console.error("Echec de la requete");
   }
 };
 
@@ -51,7 +51,7 @@ const get_student_lessons = async (id) => {
     let result = await api.get(BASE_URL + `/lesson/get_lessons_by_group/${id}`);
     return result;
   } catch (error) {
-    console.error(error);
+    console.error("Echec de la requete");
   }
 };
 

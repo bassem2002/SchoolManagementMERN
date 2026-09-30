@@ -36,7 +36,7 @@ const AddUser = () => {
         status: "active",
       });
     } catch (error) {
-      console.error("Erreur lors de l'ajout :", error);
+      console.error("Erreur lors de l'ajout :");
       alert("Une erreur est survenue.");
     }
   };

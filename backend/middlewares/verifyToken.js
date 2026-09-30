@@ -2,20 +2,22 @@
 
 const jwt = require("jsonwebtoken");
 
-function verifyToken(req, res, next) {
-  const authHeader = req.headers["authorization"];
-  // "bearer 45454aazeda54545.4545dqsdqs454545dqs.78qaaa7878787"= => ['bearer','sdsdsd.sdsd.sd']
-  let token = authHeader && authHeader.split(" ")[1];
-  if (!token) return res.status(401).json({ error: "aucun jeton fournis ! " });
-  jwt.verify(
-    token,
-    "ter-155-art-1994-unbeaumoment-557",
-    async (err, decoded) => {
-      if (err) return res.json({ error: "jeton invalide" });
-      req.user = decoded;
-      next();
-    }
-  );
+const { getJwtSecret } = require("../config/jwt");
+const Utilisateur = require("../models/Utilisateur");
+
+async function verifyToken(req, res, next) {
+  const match = /^Bearer ([^ ]+)$/i.exec(req.headers.authorization || "");
+  if (!match) return res.status(401).json({ error: "aucun jeton fournis" });
+  try {
+    const decoded = jwt.verify(match[1], getJwtSecret(), { algorithms: ["HS256"] });
+    if (!decoded._id || !Number.isFinite(decoded.exp)) throw new Error();
+    const user = await Utilisateur.findById(decoded._id);
+    if (!user || user.status !== "active") throw new Error();
+    req.user = user;
+  } catch {
+    return res.status(401).json({ error: "jeton invalide" });
+  }
+  return next();
 }
 // ... en javascript diffusion let table1 =  ["sqhghsgdsd","hsgdhsgdhs","sgdhsgd"]
 

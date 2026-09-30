@@ -12,6 +12,7 @@ const utilisateurSchema = new mongoose.Schema({
     required: true,
   },
   mot_de_passe: {
+    select: false,
     type: String,
     required: true,
   },
@@ -35,6 +36,13 @@ const utilisateurSchema = new mongoose.Schema({
     default: "active",
   },
 });
+
+function removePassword(doc, ret) {
+  delete ret.mot_de_passe;
+  return ret;
+}
+utilisateurSchema.set("toJSON", { transform: removePassword });
+utilisateurSchema.set("toObject", { transform: removePassword });
 
 let utilisateur = mongoose.model("utilisateur", utilisateurSchema);
 

@@ -15,7 +15,7 @@ const ListRooms = () => {
       setSalles(response.data);
     } catch (error) {
       toast.error("Erreur lors du chargement des salles");
-      console.error(error);
+      console.error("Echec de la requete");
     } finally {
       setLoading(false);
     }
@@ -29,7 +29,7 @@ const ListRooms = () => {
         fetchSalles();
       } catch (error) {
         toast.error("Erreur lors de la suppression");
-        console.error(error);
+        console.error("Echec de la requete");
       }
     }
   };
